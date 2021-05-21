@@ -1,0 +1,71 @@
+server:
+  port: 82
+dubbo:
+  application:
+    name: tanhua-manage
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  consumer:
+    check: false
+# log
+logging:
+  level:
+    root: info
+    com:
+      tanhua: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %msg - %logger{15}%n\'
+tanhua:
+  redisValidateCodeKeyPrefix: VALIDATECODE_
+  # jwt的密钥
+  secret: 76bd425b6f29f7fcc2e0bfc286043df1
+  sms:
+    signName: 黑马程序员
+    parameterName: code
+    validateCodeTemplateCode: SMS_164508533
+    accessKeyId: LTAI5tAcs2HCvKCyHBrYU5d1
+    accessKeySecret: eufAkeZZgjDLNIKkbMCslqyygK2smd
+  #https://snailbucket.oss-cn-beijing.aliyuncs.com url前缀
+  oss:
+    endpoint: http://oss-cn-beijing.aliyuncs.com
+    bucketName: snailbucket
+    url: https://snailbucket.oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAI5tB8kMXPXffzxbbxgxng
+    accessKeySecret: OapAhvdEBaK75emex5LFmvLeLoUli3
+
+  face:
+    appId: 24115968
+    apiKey: 4EYcvKuAIy0OaWyAEqO4mhgI
+    secretKey: jfRihWzf8gSeQVzhOuUm8LyCPH9lgZqM
+
+  tencentsms:
+    smsSdkAppId: 1400517857
+    validateCodeTemplateId: 948808
+    smsTemplateId: 949987
+    sign: 风码公众号
+    secretId: AKIDPedKEGYj4Azxf9fo7Azb1C9rKvHQdxc1
+    secretKey: KVEgeOsrb1CCBuNeiWs0tBDtKYpvoTkm
+
+    # im 环信
+  huanxin:
+    url: http://a1.easemob.com/
+    orgName: 1108210516231155
+    appName: tanhua
+    clientId: YXA6-yBEIM6mRe2kkpayp_xH5Q
+    clientSecret: YXA6zWjSbFLSEKBgoRfSY97bAn11Dco
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tanhua_manager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 666666
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#mybaits-plus
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tb_    #数据库表前缀
+      id-type: auto        #数据库表主键的策略
