@@ -4,7 +4,7 @@ dubbo:
   application:
     name: tanhua-manage
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://192.168.40.252:2181
   consumer:
     check: false
 # log
@@ -57,11 +57,11 @@ tanhua:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/tanhua_manager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/tanhua_manager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
     username: root
     password: 666666
   redis:
-    host: 127.0.0.1
+    host: 192.168.40.252
     port: 6379
 #mybaits-plus
 mybatis-plus:
