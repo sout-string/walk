@@ -8,6 +8,7 @@ import com.tanhua.domain.vo.PageResult;
 import com.tanhua.domain.vo.UserInfoVo;
 import com.tanhua.server.interceptor.UserHolder;
 import com.tanhua.server.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @RequestMapping("/users")
+@Slf4j
 public class UserInfoController {
     @Autowired
     private UserService userService;
@@ -33,7 +35,7 @@ public class UserInfoController {
      */
     @GetMapping
     public ResponseEntity getUserById(Long userID, Long huanxinID, @RequestHeader("Authorization") String token) {
-        //
+        log.info("UserInfoController-查询用户信息");
         Long userId = UserHolder.getUserId();
         //查询用户id
         UserInfoVo userInfoVo = userService.findUserInfoById(userId);
@@ -49,6 +51,7 @@ public class UserInfoController {
      */
     @PutMapping
     public ResponseEntity updateUserInfo(@RequestBody UserInfoVo vo, @RequestHeader("Authorization") String token) {
+        log.info("UserInfoController-更新用户信息");
         userService.updateUserInfo(vo, token);
         return ResponseEntity.ok(null);
     }
@@ -62,6 +65,7 @@ public class UserInfoController {
      */
     @PostMapping
     public ResponseEntity header(MultipartFile headPhoto, @RequestHeader("Authorization") String token) {
+        log.info("UserInfoController-上传头像");
         userService.updateAvatar(headPhoto, token);
         return ResponseEntity.ok(null);
     }
@@ -72,6 +76,7 @@ public class UserInfoController {
      */
     @GetMapping("/counts")
     public ResponseEntity counts() {
+        log.info("UserInfoController-统计粉丝信息");
         CountsVo countsVo = userService.counts();
         return ResponseEntity.ok(countsVo);
     }
@@ -83,6 +88,7 @@ public class UserInfoController {
      */
     @GetMapping("/friends/{type}")
     public ResponseEntity queryUserLikeList(@PathVariable int type, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pagesize) {
+        log.info("UserInfoController-好友、喜欢、粉丝分页查询");
         page = page > 0 ? page : 1;
         PageResult<FriendVo> result = userService.queryUserLikeList(page, pagesize, type);
         return ResponseEntity.ok(result);
@@ -95,6 +101,7 @@ public class UserInfoController {
      */
     @PostMapping("/fans/{uid}")
     public ResponseEntity fansLike(@PathVariable("uid") Long uid) {
+        log.info("UserInfoController-喜欢（关注）用户");
         userService.fansLike(uid);
         return ResponseEntity.ok(null);
     }

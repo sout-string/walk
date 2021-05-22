@@ -10,6 +10,7 @@ import com.tanhua.server.service.IMService;
 import com.tanhua.server.service.LocationService;
 import com.tanhua.server.service.RecommendUserService;
 import com.tanhua.server.service.TodayBestService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/tanhua")
+@Slf4j
 public class RecommendUserController {
     @Autowired
     private RecommendUserService recommendUserService;
@@ -40,6 +42,7 @@ public class RecommendUserController {
      */
     @GetMapping("/recommendation")
     public ResponseEntity recommendList(RecommendUserQueryParam recommendUserQueryParam) {
+        log.info("RecommendUserController-查询首页推荐");
         PageResult<RecommendUserVo> pageResult = recommendUserService.recommendList(recommendUserQueryParam);
         return ResponseEntity.ok(pageResult);
     }
@@ -52,6 +55,7 @@ public class RecommendUserController {
      */
     @GetMapping("/{id}/personalInfo")
     public ResponseEntity<RecommendUserVo> queryUserDetail(@PathVariable("id") Long userId) {
+        log.info("RecommendUserController-获取佳人信息");
         RecommendUserVo userInfoVo = recommendUserService.getUserInfo(userId);
         return ResponseEntity.ok(userInfoVo);
     }
@@ -64,6 +68,7 @@ public class RecommendUserController {
      */
     @GetMapping("/strangerQuestions")
     public ResponseEntity<String> strangerQuestions(Long userId) {
+        log.info("RecommendUserController-查询用户陌生人问题");
         String question = recommendUserService.queryStrangerQuestions(userId);
         return ResponseEntity.ok(question);
     }
@@ -76,6 +81,7 @@ public class RecommendUserController {
      */
     @PostMapping("/strangerQuestions")
     public ResponseEntity replyStrangerQuestions(@RequestBody Map<String, Object> paramMap) {
+        log.info("RecommendUserController-回复陌生人问题");
         imService.replyStrangerQuestions(paramMap);
         return ResponseEntity.ok(null);
     }
@@ -87,6 +93,7 @@ public class RecommendUserController {
      */
     @GetMapping("/search")
     public ResponseEntity searchNearBy(@RequestParam(required = false) String gender, @RequestParam(defaultValue = "200") String distance) {
+        log.info("RecommendUserController-搜索附近");
         List<NearUserVo> list = locationService.searchNearBy(gender, distance);
         return ResponseEntity.ok(list);
     }

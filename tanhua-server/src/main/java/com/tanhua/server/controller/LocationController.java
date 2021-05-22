@@ -1,6 +1,7 @@
 package com.tanhua.server.controller;
 
 import com.tanhua.server.service.LocationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/baidu")
+@Slf4j
 public class LocationController {
     @Autowired
     private LocationService locationService;
@@ -27,6 +29,7 @@ public class LocationController {
      */
     @PostMapping("/location")
     public ResponseEntity reportLocation(@RequestBody Map<String, Object> paramMap) {
+        log.info("LocationController-上报地理位置");
         locationService.reportLocation(paramMap);
         return ResponseEntity.ok(null);
     }

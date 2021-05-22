@@ -5,6 +5,7 @@ import com.tanhua.domain.vo.VideoVo;
 import com.tanhua.server.service.CommentService;
 import com.tanhua.server.service.MomentService;
 import com.tanhua.server.service.VideoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/smallVideos")
+@Slf4j
 public class VideoController {
     @Autowired
     private VideoService videoService;
@@ -35,6 +37,7 @@ public class VideoController {
      */
     @PostMapping
     public ResponseEntity post(MultipartFile videoThumbnail, MultipartFile videoFile) throws IOException {
+        log.info("VideoController-发布小视频");
         videoService.post(videoThumbnail, videoFile);
         return ResponseEntity.ok(null);
     }
@@ -47,6 +50,7 @@ public class VideoController {
      */
     @GetMapping
     public ResponseEntity findPage(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pagesize) {
+        log.info("VideoController-分页查看小视频");
         page = page< 1 ? 1 : page;
         PageResult<VideoVo> result = videoService.findPage(page, pagesize);
         return ResponseEntity.ok(result);
@@ -59,6 +63,7 @@ public class VideoController {
      */
     @PostMapping("/{id}/userFocus")
     public ResponseEntity followUser(@PathVariable("id") long userId) {
+        log.info("VideoController-关注视频作者");
         videoService.followUser(userId);
         return ResponseEntity.ok(null);
     }
@@ -71,6 +76,7 @@ public class VideoController {
      */
     @PostMapping("/{id}/userUnFocus")
     public ResponseEntity unfollowUser(@PathVariable("id") long userId) {
+        log.info("VideoController-取消关注视频作者");
         videoService.unfollowUser(userId);
         return ResponseEntity.ok(null);
     }
@@ -82,6 +88,7 @@ public class VideoController {
      */
     @PostMapping("/{samllvideoId}/like")
     public ResponseEntity like(@PathVariable("samllvideoId") String videoId) {
+        log.info("VideoController-视频点赞");
         commentService.like(videoId, TARGET_TYPE_SMALL_VIDEO);
         return ResponseEntity.ok(null);
     }
@@ -93,6 +100,7 @@ public class VideoController {
      */
     @PostMapping("/{samllvideoId}/dislike")
     public ResponseEntity dislike(@PathVariable("samllvideoId") String videoId) {
+        log.info("VideoController-取消视频点赞");
         commentService.dislike(videoId, TARGET_TYPE_SMALL_VIDEO);
         return ResponseEntity.ok(null);
     }

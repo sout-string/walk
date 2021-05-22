@@ -5,6 +5,7 @@ import com.tanhua.domain.vo.CommentVo;
 import com.tanhua.domain.vo.PageResult;
 import com.tanhua.dubbo.api.mongo.CommentApi;
 import com.tanhua.server.service.CommentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/comments")
+@Slf4j
 public class CommentsController {
     @Autowired
     private CommentService commentService;
@@ -32,6 +34,7 @@ public class CommentsController {
      */
     @PostMapping
     public ResponseEntity add(@RequestBody Map<String, String> paramMap) {
+        log.info("CommentsController-对动态添加评论类型的评论");
         commentService.add(paramMap,TARGET_TYPE_PUBLISH);
 
         return ResponseEntity.ok(null);
@@ -45,6 +48,7 @@ public class CommentsController {
      */
     @PutMapping
     public ResponseEntity delete(@RequestBody Map<String, String> paramMap) {
+        log.info("CommentsController-对动态删除评论类型的评论");
         commentService.delete(paramMap);
         return ResponseEntity.ok(null);
     }
@@ -59,6 +63,7 @@ public class CommentsController {
      */
     @GetMapping
     public ResponseEntity findPage(String movementId, @RequestParam(defaultValue = "1") Long page, @RequestParam(defaultValue = "10") Long pagesize) {
+        log.info("CommentsController-查询动态的评论型评论的列表");
         //避免错误数据
         page = page > 1 ? page : 1;
         PageResult<CommentVo> result = commentService.findPage(movementId, page, pagesize);
@@ -72,6 +77,7 @@ public class CommentsController {
      */
     @GetMapping("/{commentId}/like")
     public ResponseEntity like(@PathVariable String commentId) {
+        log.info("CommentsController-对评论进行点赞");
         long likeCount = commentService.like(commentId, TARGET_TYPE_COMMENT);
         return ResponseEntity.ok(likeCount);
 
@@ -85,17 +91,19 @@ public class CommentsController {
      */
     @GetMapping("/{commentId}/dislike")
     public ResponseEntity dislike(@PathVariable String commentId) {
+        log.info("CommentsController-取消对评论的点赞");
         long likeCount = commentService.dislike(commentId, TARGET_TYPE_COMMENT);
         return ResponseEntity.ok(likeCount);
     }
     /**
-     * 对评论进行点赞
+     * 对评论进行喜欢
      *
      * @param commentId
      * @return
      */
     @GetMapping("/{commentId}/love")
     public ResponseEntity love(@PathVariable String commentId) {
+        log.info("CommentsController-对评论进行喜欢");
         long loveCount = commentService.love(commentId, TARGET_TYPE_COMMENT);
         return ResponseEntity.ok(loveCount);
 
@@ -109,6 +117,7 @@ public class CommentsController {
      */
     @GetMapping("/{commentId}/unlove")
     public ResponseEntity unlove(@PathVariable String commentId) {
+        log.info("CommentsController-取消对评论的喜欢");
         long loveCount = commentService.unlove(commentId, TARGET_TYPE_COMMENT);
         return ResponseEntity.ok(loveCount);
     }
