@@ -16,7 +16,6 @@ public class AnnounController {
     private AnnounService announService;
     @GetMapping("/announcements")
     public ResponseEntity announcements(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pagesizeize) {
-        System.out.println("制造冲突");
         return announService.announcements(page, pagesizeize);
     }
 }
