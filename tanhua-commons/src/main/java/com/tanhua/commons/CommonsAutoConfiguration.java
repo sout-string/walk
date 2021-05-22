@@ -15,6 +15,12 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @EnableConfigurationProperties({SmsProperties.class, OssProperties.class, FaceProperties.class, TencentSmsProperties.class,HuanXinProperties.class})
 public class CommonsAutoConfiguration {
+
+    /**
+     * 这是测试推送新版本
+     * @param smsProperties
+     * @return
+     */
     @Bean
     public SmsTemplate smsTemplate(SmsProperties smsProperties) {
         SmsTemplate smsTemplate = new SmsTemplate(smsProperties);
