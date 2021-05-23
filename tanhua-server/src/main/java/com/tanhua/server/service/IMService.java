@@ -14,7 +14,6 @@ import com.tanhua.dubbo.api.QuestionApi;
 import com.tanhua.dubbo.api.UserInfoApi;
 import com.tanhua.dubbo.api.mongo.CommentApi;
 import com.tanhua.server.interceptor.UserHolder;
-import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
