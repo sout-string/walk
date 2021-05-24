@@ -236,7 +236,10 @@ public class UserService {
     public UserInfoVo findUserInfoById(Long id) {
         UserInfo userInfo = userInfoApi.findById(id);
         UserInfoVo userInfoVo = new UserInfoVo();
-        BeanUtils.copyProperties(userInfo, userInfoVo);
+        if(userInfo!=null){
+            BeanUtils.copyProperties(userInfo, userInfoVo);
+        }
+
         return userInfoVo;
     }
 

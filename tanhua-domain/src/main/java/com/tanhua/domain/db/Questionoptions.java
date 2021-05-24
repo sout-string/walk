@@ -24,5 +24,5 @@ public class Questionoptions implements Serializable {
     // 选项内容
     private String options;
     // 选项评分
-    private Integer optionScore;
+    private Integer questionScore;
 }

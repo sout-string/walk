@@ -52,6 +52,7 @@ public class RecommendUserService {
         Long userId = UserHolder.getUserId();
         //查找首页推荐
         PageResult result = recommendUserApi.findPage(recommendUserQueryParam.getPage(), recommendUserQueryParam.getPagesize(), userId);
+
         List<RecommendUser> items = result.getItems();
         //无推荐使用默认推荐
         if (items == null || items.isEmpty()) {
