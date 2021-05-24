@@ -1,7 +1,13 @@
 package com.tanhua.commons.content;
 
 public  interface SoulReportUtils {
-
+    /**
+     * 是否锁住
+     */
+    static final  int  YES_LOCK =1;
+    static final  int  NO_LOCK =0;
+    //初级默认
+    static final  String  DEFOULT_LOCK ="1";
 
     /**
      * 0-20 猫头鹰

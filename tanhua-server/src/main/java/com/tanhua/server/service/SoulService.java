@@ -1,5 +1,6 @@
 package com.tanhua.server.service;
 
+import com.tanhua.commons.content.SoulReportUtils;
 import com.tanhua.domain.db.Questionlist;
 import com.tanhua.domain.db.SoulReport;
 import com.tanhua.domain.vo.SoulListVo;
@@ -59,16 +60,16 @@ public class SoulService {
             //默认为0
             //查询数据是否锁住
             List<SoulReport> result = soulReportApi.getReportMap(UserHolder.getUserId());
-            soulListVos.setIsLock(1);
+            soulListVos.setIsLock(SoulReportUtils.YES_LOCK);
             if (CollectionUtils.isNotEmpty(result)) {
                 for (SoulReport soulcomment : result) {
                     if (questionlist.getId().toString().equals(soulcomment.getLv())) {
-                        soulListVos.setIsLock(0);
+                        soulListVos.setIsLock(SoulReportUtils.NO_LOCK);
                         soulListVos.setId(soulcomment.getId()+"");
                     }
                 }
-            } else if (questionlist.getId().toString().equals("1")) {
-                soulListVos.setIsLock(0);
+            } else if (questionlist.getId().toString().equals(SoulReportUtils.DEFOULT_LOCK)) {
+                soulListVos.setIsLock(SoulReportUtils.NO_LOCK);
             }
 
 
