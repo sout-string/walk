@@ -2,23 +2,16 @@ package com.tanhua.server.service;
 
 import com.tanhua.commons.content.SoulReportUtils;
 import com.tanhua.domain.db.SoulReport;
+import com.tanhua.domain.db.User;
 import com.tanhua.domain.db.UserInfo;
+import com.tanhua.domain.vo.AnswersVo;
 import com.tanhua.domain.vo.SoulReportVo;
 import com.tanhua.dubbo.api.SoulReportApi;
 import com.tanhua.dubbo.api.UserInfoApi;
+import com.tanhua.server.interceptor.UserHolder;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
-import com.tanhua.domain.db.User;
-import com.tanhua.domain.vo.AnswersVo;
-import com.tanhua.dubbo.api.QuestionSoulApi;
-import com.tanhua.dubbo.api.QuestionoptionsApi;
-import com.tanhua.server.interceptor.UserHolder;
-import org.springframework.beans.factory.annotation.Autowired;
 
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,6 +20,8 @@ public class TestSoulService {
 
     @Reference
     private UserInfoApi userInfoApi;
+    @Reference
+    private SoulReportApi soulReportApi;
 
     /**
      * 查看报告结果

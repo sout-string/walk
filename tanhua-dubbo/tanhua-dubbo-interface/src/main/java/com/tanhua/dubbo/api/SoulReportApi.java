@@ -21,6 +21,7 @@ public interface SoulReportApi {
      * @param maxScore
      * @return
      */
-    List<Long> similar(Integer minScore, Integer maxScore);
+    List<Long> similar(Integer minScore, Integer maxScore);}
+
 
 
