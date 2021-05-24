@@ -14,11 +14,10 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionOptions implements Serializable {
-    private   Integer id;
-    private     String  option;
-    private     Integer score;
-    private     Integer questionId;
-
-    private Integer sort;
+public class Questionoptions implements Serializable {
+    private Integer id;
+    private Integer questionid;
+    private Integer optionsid;
+    private String options;
+    private Integer questionscore;
 }

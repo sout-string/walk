@@ -1,4 +1,4 @@
-package com.tanhua.domain.vo;
+package com.tanhua.domain.db;
 
 
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SoulListVo implements Serializable {
+public class SoulList implements Serializable {
     //灵魂问卷表
     private String id; //灵魂问卷ID号
     private String name;//问卷名称
@@ -26,7 +26,7 @@ public class SoulListVo implements Serializable {
     private Integer star;  //星别
     private Integer isLock; //试题编号
     private String reportId;//最新报告id
-    private List<SoulQuestionVo> questions;//题目表
-
+    private List<QuestionSoul> questions;//题目表
+    private List<Questionoptions> options;//题目答案选项表
 
 }

@@ -1,5 +1,6 @@
 package com.tanhua.domain.db;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +15,14 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Questionnaire implements Serializable {
+/**
+ * 灵魂问卷表
+ */
+
+public class Questionlist implements Serializable {
     private  Integer id;
     private  String name;
-    private  String cover;
-    private  Integer lv;
+    private  String avator;
+    private  String lv;
     private  Integer star;
 }

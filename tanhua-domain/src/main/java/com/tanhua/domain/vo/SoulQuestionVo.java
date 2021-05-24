@@ -1,10 +1,11 @@
-package com.tanhua.domain.db;
+package com.tanhua.domain.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @description
@@ -15,9 +16,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SoulQuestion implements Serializable {
-    private Integer id;
+public class SoulQuestionVo implements Serializable {
+    private String  id;
     private String question;//题目
-    private Integer dimensionTypeId;//维度类型表id
-    private Integer questionnaireId;//灵魂问卷表id
+    private List<QuestionOptionsVo> options;//题目答案选项表
 }
