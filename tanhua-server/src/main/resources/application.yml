@@ -1,5 +1,5 @@
 server:
-  port: 882
+  port: 81
 dubbo:
   application:
     name: tanhua-server

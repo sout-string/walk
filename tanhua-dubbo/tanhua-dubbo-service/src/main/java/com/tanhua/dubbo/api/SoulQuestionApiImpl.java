@@ -47,7 +47,7 @@ public class SoulQuestionApiImpl implements SoulQuestionApi {
             soulQuestionVo.setQuestion(soulQuestion.getQuestuinstem());
             soulQuestionVo.setId(soulQuestion.getId() + "");
             QueryWrapper<Questionoptions> qw = new QueryWrapper<>();
-            qw.eq("questionid", soulQuestion.getId());
+            qw.eq("question_id", soulQuestion.getId());
             //选项表中有很多选项
             List<Questionoptions> questionOptions = questionOptionsMaper.selectList(qw);
 
