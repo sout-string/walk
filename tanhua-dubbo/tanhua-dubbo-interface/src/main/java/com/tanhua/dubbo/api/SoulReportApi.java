@@ -1,9 +1,12 @@
 package com.tanhua.dubbo.api;
 
+
 import com.tanhua.domain.db.SoulReport;
 
 import java.util.List;
-
+/**
+ *  报告表
+ */
 public interface SoulReportApi {
     /**
      * 查询编号
@@ -19,4 +22,5 @@ public interface SoulReportApi {
      * @return
      */
     List<Long> similar(Integer minScore, Integer maxScore);
-}
+
+

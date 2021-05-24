@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ *  报告表
+ */
 @Service
 public class SoulReportApiImpl implements SoulReportApi {
 

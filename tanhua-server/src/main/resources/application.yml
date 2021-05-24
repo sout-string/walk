@@ -25,7 +25,6 @@ tanhua:
     validateCodeTemplateCode: SMS_164508533
     accessKeyId: LTAI5tAcs2HCvKCyHBrYU5d1
     accessKeySecret: eufAkeZZgjDLNIKkbMCslqyygK2smd
-#https://snailbucket.oss-cn-beijing.aliyuncs.com url前缀
   oss:
     endpoint: http://oss-cn-beijing.aliyuncs.com
     bucketName: snailbucket
