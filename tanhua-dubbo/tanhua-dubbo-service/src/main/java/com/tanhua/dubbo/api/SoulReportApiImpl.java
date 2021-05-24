@@ -34,8 +34,6 @@ public class SoulReportApiImpl implements SoulReportApi {
         log.info("查询是该用户是否有报告生成{}",result);
         return result;
     }
-    @Autowired
-    private SoulReportMapper soulReportMapper;
 
     /**
      * 查询编号
