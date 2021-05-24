@@ -55,7 +55,7 @@ public class SoulQuestionApiImpl implements SoulQuestionApi {
             if (questionOptions!=null){
                 for (Questionoptions option : questionOptions) {
                     QuestionOptionsVo questionOptionsVo = new QuestionOptionsVo();
-                    questionOptionsVo.setId(option.getId() + "");
+                    questionOptionsVo.setId(option.getOptionsId() + "");
                     questionOptionsVo.setOption(option.getOptions());
                     questionOptionsVoList.add(questionOptionsVo);
                 }
