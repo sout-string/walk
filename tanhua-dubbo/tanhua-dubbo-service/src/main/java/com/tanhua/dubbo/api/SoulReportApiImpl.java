@@ -1,6 +1,9 @@
 package com.tanhua.dubbo.api;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.tanhua.domain.db.SoulReport;
+import com.tanhua.dubbo.mapper.SoulReportMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.tanhua.dubbo.mapper.SoulReportMapper;
 import lombok.extern.slf4j.Slf4j;
 import com.tanhua.domain.db.SoulReport;
@@ -15,9 +18,15 @@ import java.util.List;
 @Service
 @Slf4j
 public class SoulReportApiImpl implements SoulReportApi {
-
     @Autowired
-    SoulReportMapper soulReportMapper;
+    private SoulReportMapper soulReportMapper;
+    /**
+     * 根据用户id查询报告表
+     * @param id
+     * @return
+     */
+
+
     /**
      * 查询是该用户是否有报告生成
      *
@@ -31,6 +40,24 @@ public class SoulReportApiImpl implements SoulReportApi {
         List result = soulReportMapper.selectList(queryWrapper);
         log.info("查询是该用户是否有报告生成{}",result);
         return result;
+    }
+    @Override
+    public List<SoulReport> findByList(Long id) {
+        QueryWrapper<SoulReport> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userId",id);
+       return soulReportMapper.selectList(queryWrapper);
+    }
+
+    /**
+     * 解锁用户等级填充数据
+     *
+     * @param soulcomment
+     */
+    @Override
+    public void insert(SoulReport soulcomment) {
+        int insert = soulReportMapper.insert(soulcomment);
+
+
     }
 
     /**
