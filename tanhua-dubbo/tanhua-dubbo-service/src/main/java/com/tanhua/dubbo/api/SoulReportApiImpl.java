@@ -26,8 +26,7 @@ public class SoulReportApiImpl implements SoulReportApi {
      * @return
      */
 
-    @Autowired
-    SoulReportMapper soulReportMapper;
+
     /**
      * 查询是该用户是否有报告生成
      *
@@ -60,7 +59,7 @@ public class SoulReportApiImpl implements SoulReportApi {
 
 
     }
-}
+
     /**
      * 查询编号
      *
