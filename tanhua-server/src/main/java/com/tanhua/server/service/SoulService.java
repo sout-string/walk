@@ -1,7 +1,7 @@
 package com.tanhua.server.service;
 
 import com.tanhua.domain.db.Questionlist;
-import com.tanhua.domain.db.Soulcomment;
+import com.tanhua.domain.db.SoulReport;
 import com.tanhua.domain.vo.SoulListVo;
 import com.tanhua.domain.vo.SoulQuestionVo;
 import com.tanhua.dubbo.api.QuestionlistApi;
@@ -58,10 +58,10 @@ public class SoulService {
             soulListVos.setId(questionlist.getId() + "");
             //默认为0
             //查询数据是否锁住
-            List<Soulcomment> result = soulReportApi.getReportMap(UserHolder.getUserId());
+            List<SoulReport> result = soulReportApi.getReportMap(UserHolder.getUserId());
             soulListVos.setIsLock(1);
             if (CollectionUtils.isNotEmpty(result)) {
-                for (Soulcomment soulcomment : result) {
+                for (SoulReport soulcomment : result) {
                     if (questionlist.getId().toString().equals(soulcomment.getLv())) {
                         soulListVos.setIsLock(0);
                         soulListVos.setId(soulcomment.getId()+"");

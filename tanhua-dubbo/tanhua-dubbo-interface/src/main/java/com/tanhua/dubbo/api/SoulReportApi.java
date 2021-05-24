@@ -1,7 +1,6 @@
 package com.tanhua.dubbo.api;
 
 import com.tanhua.domain.db.SoulReport;
-import com.tanhua.domain.db.Soulcomment;
 
 import java.util.List;
 /**
@@ -14,7 +13,7 @@ public interface SoulReportApi {
      * @param userId
      * @return
      */
-    List<Soulcomment> getReportMap(Long userId);
+    List<SoulReport> getReportMap(Long userId);
     /**
      * 查询编号
      * @param reportId
