@@ -5,11 +5,11 @@ package com.tanhua.domain.constant;
  */
 public final  class SoulConstant {
     // 理性
-    private static final Integer REASON=21;
+    public static final Integer REASON=21;
     // 外向
-    private static final Integer OUTGOING=19;
+    public static final Integer OUTGOING=19;
     // 抽象
-    private static final Integer ABSTRACTTYPE=16;
+    public static final Integer ABSTRACTTYPE=16;
     // 判断
-    private static final Integer JUDGMENT=14;
+    public static final Integer JUDGMENT=14;
 }

@@ -10,4 +10,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 
 public interface QuestionSoulApi  {
+    /**
+     *  根据题目id查询题目表
+     * @param questionId
+     * @return
+     */
+    QuestionBank findById(String questionId);
 }

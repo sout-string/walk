@@ -9,4 +9,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 
 public interface QuestionoptionsApi  {
+    /**
+     * 根据题目和选项id查询选项
+     * @param id
+     * @param optionId
+     * @return
+     */
+    Questionoptions findById(Integer id, String optionId);
 }
